@@ -33,8 +33,6 @@ const { title, lang = 'es' } = Astro.props;
 		<script is:inline>
 			// Theme toggle functionality - runs globally once
 			(function() {
-				console.log('Theme toggle script loaded');
-				
 				function getTheme() {
 					if (typeof localStorage !== 'undefined' && localStorage.getItem('color-theme')) {
 						return localStorage.getItem('color-theme');
@@ -47,10 +45,6 @@ const { title, lang = 'es' } = Astro.props;
 					const moonIcons = document.querySelectorAll('.theme-icon-moon');
 					const sunIcons = document.querySelectorAll('.theme-icon-sun');
 					
-					console.log('Updating icons for theme:', theme);
-					console.log('Moon icons found:', moonIcons.length);
-					console.log('Sun icons found:', sunIcons.length);
-					
 					if (theme === 'dark') {
 						moonIcons.forEach(icon => icon.classList.add('hidden'));
 						sunIcons.forEach(icon => icon.classList.remove('hidden'));
@@ -61,7 +55,6 @@ const { title, lang = 'es' } = Astro.props;
 				}
 
 				function setTheme(newTheme) {
-					console.log('Setting theme to:', newTheme);
 					if (newTheme === 'dark') {
 						document.documentElement.classList.add('dark');
 					} else {
@@ -73,17 +66,12 @@ const { title, lang = 'es' } = Astro.props;
 
 				// Initialize icons on page load
 				document.addEventListener('DOMContentLoaded', function() {
-					console.log('DOM loaded, initializing theme toggle');
 					updateIcons();
 					
 					// Add click handlers to all toggle buttons
 					const toggleButtons = document.querySelectorAll('.theme-toggle');
-					console.log('Toggle buttons found:', toggleButtons.length);
-					
-					toggleButtons.forEach((button, index) => {
-						console.log('Adding listener to button', index);
+					toggleButtons.forEach(button => {
 						button.addEventListener('click', function(e) {
-							console.log('Button clicked!');
 							e.preventDefault();
 							const currentTheme = getTheme();
 							const newTheme = currentTheme === 'dark' ? 'light' : 'dark';

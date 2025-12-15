@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import { buildPath } from '../utils/paths';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -87,7 +88,7 @@ const services = [
           <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
             {service.description}
           </p>
-          <a href={`/${lang}#contact`} class={`inline-flex items-center ${service.textColor} font-semibold hover:gap-2 transition-all`}>
+          <a href={buildPath(`/${lang}#contact`)} class={`inline-flex items-center ${service.textColor} font-semibold hover:gap-2 transition-all`}>
             {t('services.moreInfo')}
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

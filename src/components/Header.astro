@@ -2,6 +2,7 @@
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSelector from './LanguageSelector.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import { buildPath } from '../utils/paths';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,7 +11,7 @@ const t = useTranslations(lang);
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
       <!-- Logo -->
-      <a href={`/${lang}`} class="flex items-center gap-2 group">
+      <a href={buildPath(`/${lang}`)} class="flex items-center gap-2 group">
         <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition duration-300">
           <span class="text-white font-bold text-xl">M</span>
         </div>
@@ -21,26 +22,26 @@ const t = useTranslations(lang);
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center space-x-6">
-        <a href={`/${lang}#hero`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
+        <a href={buildPath(`/${lang}#hero`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
           {t('nav.home')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href={`/${lang}#services`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
+        <a href={buildPath(`/${lang}#services`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
           {t('nav.services')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href={`/${lang}#about`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
+        <a href={buildPath(`/${lang}#about`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
           {t('nav.about')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href={`/${lang}#contact`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
+        <a href={buildPath(`/${lang}#contact`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 relative group">
           {t('nav.contact')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
         </a>
         <div class="flex items-center gap-3">
           <ThemeToggle />
           <LanguageSelector currentLang={lang} />
-          <a href={`/${lang}#contact`} class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2.5 rounded-full font-bold shadow-lg transform hover:scale-105 transition duration-300">
+          <a href={buildPath(`/${lang}#contact`)} class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2.5 rounded-full font-bold shadow-lg transform hover:scale-105 transition duration-300">
             {t('nav.cta')}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -64,11 +65,11 @@ const t = useTranslations(lang);
     <!-- Mobile Navigation -->
     <nav id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-gray-200 dark:border-gray-700 mt-2 pt-4">
       <div class="flex flex-col space-y-4">
-        <a href={`/${lang}#hero`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.home')}</a>
-        <a href={`/${lang}#services`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.services')}</a>
-        <a href={`/${lang}#about`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.about')}</a>
-        <a href={`/${lang}#contact`} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.contact')}</a>
-        <a href={`/${lang}#contact`} class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-bold shadow-lg">
+        <a href={buildPath(`/${lang}#hero`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.home')}</a>
+        <a href={buildPath(`/${lang}#services`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.services')}</a>
+        <a href={buildPath(`/${lang}#about`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.about')}</a>
+        <a href={buildPath(`/${lang}#contact`)} class="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold transition duration-300 py-2">{t('nav.contact')}</a>
+        <a href={buildPath(`/${lang}#contact`)} class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-bold shadow-lg">
           {t('nav.cta')}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

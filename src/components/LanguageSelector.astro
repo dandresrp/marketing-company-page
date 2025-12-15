@@ -1,5 +1,6 @@
 ---
 import { languages } from '../i18n/translations';
+import { buildPath } from '../utils/paths';
 
 const { currentLang = 'es' } = Astro.props;
 ---
@@ -26,7 +27,7 @@ const { currentLang = 'es' } = Astro.props;
   >
     {Object.entries(languages).map(([code, name]) => (
       <a
-        href={`/${code}`}
+        href={buildPath(`/${code}`)}
         class={`block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
           code === currentLang 
             ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900/20' 

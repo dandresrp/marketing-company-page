@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import { buildPath } from '../utils/paths';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,7 +11,7 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <!-- Company Info -->
       <div class="space-y-4">
-        <a href={`/${lang}`} class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <a href={buildPath(`/${lang}`)} class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
           MarketingPro
         </a>
         <p class="text-gray-400 dark:text-gray-500 leading-relaxed">
@@ -44,12 +45,12 @@ const t = useTranslations(lang);
       <div>
         <h3 class="text-lg font-bold mb-4">{t('footer.services')}</h3>
         <ul class="space-y-3">
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.seo.title')}</a></li>
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.social.title')}</a></li>
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.content.title')}</a></li>
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.ppc.title')}</a></li>
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.web.title')}</a></li>
-          <li><a href={`/${lang}#services`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.email.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.seo.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.social.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.content.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.ppc.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.web.title')}</a></li>
+          <li><a href={buildPath(`/${lang}#services`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('services.email.title')}</a></li>
         </ul>
       </div>
 
@@ -57,12 +58,12 @@ const t = useTranslations(lang);
       <div>
         <h3 class="text-lg font-bold mb-4">{t('footer.company')}</h3>
         <ul class="space-y-3">
-          <li><a href={`/${lang}#about`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.about')}</a></li>
+          <li><a href={buildPath(`/${lang}#about`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.about')}</a></li>
           <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.team')}</a></li>
           <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.cases')}</a></li>
           <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.blog')}</a></li>
           <li><a href="#" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('footer.company.careers')}</a></li>
-          <li><a href={`/${lang}#contact`} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('nav.contact')}</a></li>
+          <li><a href={buildPath(`/${lang}#contact`)} class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition duration-300">{t('nav.contact')}</a></li>
         </ul>
       </div>
 

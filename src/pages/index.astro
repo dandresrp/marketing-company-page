@@ -1,7 +1,10 @@
 ---
 import { defaultLang } from '../i18n/translations';
+import { buildPath } from '../utils/paths';
+
+const redirectUrl = buildPath(`/${defaultLang}`);
 ---
 
-<script define:vars={{ defaultLang }}>
-  window.location.href = `/${defaultLang}`;
+<script define:vars={{ redirectUrl }}>
+  window.location.href = redirectUrl;
 </script>
