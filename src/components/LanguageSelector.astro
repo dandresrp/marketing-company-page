@@ -1,0 +1,58 @@
+---
+import { languages } from '../i18n/translations';
+
+const { currentLang = 'es' } = Astro.props;
+---
+
+<div class="relative" id="language-selector">
+  <button
+    id="language-button"
+    type="button"
+    class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+    aria-label="Select language"
+  >
+    <svg class="w-5 h-5 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+    </svg>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-200 uppercase">{currentLang}</span>
+    <svg class="w-4 h-4 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  
+  <div
+    id="language-dropdown"
+    class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50"
+  >
+    {Object.entries(languages).map(([code, name]) => (
+      <a
+        href={`/${code}`}
+        class={`block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+          code === currentLang 
+            ? 'text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900/20' 
+            : 'text-gray-700 dark:text-gray-200'
+        } ${code === 'es' ? 'rounded-t-lg' : code === 'en' ? 'rounded-b-lg' : ''}`}
+      >
+        {name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const languageButton = document.getElementById('language-button');
+  const languageDropdown = document.getElementById('language-dropdown');
+
+  languageButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    languageDropdown?.classList.toggle('hidden');
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const selector = document.getElementById('language-selector');
+    if (selector && !selector.contains(e.target as Node)) {
+      languageDropdown?.classList.add('hidden');
+    }
+  });
+</script>

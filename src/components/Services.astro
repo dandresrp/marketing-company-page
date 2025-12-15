@@ -1,0 +1,100 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services = [
+  {
+    title: t('services.seo.title'),
+    description: t('services.seo.description'),
+    gradient: 'from-blue-500 to-blue-600',
+    hoverColor: 'hover:border-blue-300 dark:hover:border-blue-500',
+    textColor: 'text-blue-600 dark:text-blue-400',
+    hoverTextColor: 'group-hover:text-blue-600 dark:group-hover:text-blue-400',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+  },
+  {
+    title: t('services.social.title'),
+    description: t('services.social.description'),
+    gradient: 'from-purple-500 to-pink-600',
+    hoverColor: 'hover:border-purple-300 dark:hover:border-purple-500',
+    textColor: 'text-purple-600 dark:text-purple-400',
+    hoverTextColor: 'group-hover:text-purple-600 dark:group-hover:text-purple-400',
+    icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z'
+  },
+  {
+    title: t('services.content.title'),
+    description: t('services.content.description'),
+    gradient: 'from-teal-500 to-cyan-600',
+    hoverColor: 'hover:border-teal-300 dark:hover:border-teal-500',
+    textColor: 'text-teal-600 dark:text-teal-400',
+    hoverTextColor: 'group-hover:text-teal-600 dark:group-hover:text-teal-400',
+    icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
+  },
+  {
+    title: t('services.ppc.title'),
+    description: t('services.ppc.description'),
+    gradient: 'from-orange-500 to-red-600',
+    hoverColor: 'hover:border-orange-300 dark:hover:border-orange-500',
+    textColor: 'text-orange-600 dark:text-orange-400',
+    hoverTextColor: 'group-hover:text-orange-600 dark:group-hover:text-orange-400',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z'
+  },
+  {
+    title: t('services.web.title'),
+    description: t('services.web.description'),
+    gradient: 'from-emerald-500 to-green-600',
+    hoverColor: 'hover:border-emerald-300 dark:hover:border-emerald-500',
+    textColor: 'text-emerald-600 dark:text-emerald-400',
+    hoverTextColor: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400',
+    icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+  },
+  {
+    title: t('services.email.title'),
+    description: t('services.email.description'),
+    gradient: 'from-yellow-500 to-amber-600',
+    hoverColor: 'hover:border-yellow-300 dark:hover:border-yellow-500',
+    textColor: 'text-yellow-600 dark:text-yellow-400',
+    hoverTextColor: 'group-hover:text-yellow-600 dark:group-hover:text-yellow-400',
+    icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+  }
+];
+---
+<section id="services" class="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold mb-4">
+        {t('services.badge')}
+      </span>
+      <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+        {t('services.title')}<br/>
+        <span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{t('services.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        {t('services.subtitle')}
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class={`group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 ${service.hoverColor}`}>
+          <div class={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon}></path>
+            </svg>
+          </div>
+          <h3 class={`text-2xl font-bold text-gray-900 dark:text-white mb-4 ${service.hoverTextColor} transition-colors`}>{service.title}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+            {service.description}
+          </p>
+          <a href={`/${lang}#contact`} class={`inline-flex items-center ${service.textColor} font-semibold hover:gap-2 transition-all`}>
+            {t('services.moreInfo')}
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
