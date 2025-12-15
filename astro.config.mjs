@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://dandresrp.github.io',
-  base: '/marketing-company-page',
+  base: '/',
   integrations: [tailwind({
     applyBaseStyles: true,
   })]

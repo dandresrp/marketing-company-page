@@ -80,6 +80,82 @@ const { title, lang = 'es' } = Astro.props;
 					});
 				});
 			})();
+
+			// Language selector functionality - runs globally once
+			(function() {
+				function initLanguageSelector() {
+					// Find all language selectors
+					const selectors = document.querySelectorAll('.language-selector');
+					
+					selectors.forEach((selector) => {
+						const button = selector.querySelector('.language-button');
+						const dropdown = selector.querySelector('.language-dropdown');
+						
+						if (!button || !dropdown) return;
+						
+						// Track if we've handled an event recently to prevent double-firing
+						let eventHandled = false;
+						
+						// Toggle function - only for button clicks
+						function toggleDropdown(e) {
+							// Only process if clicking on button, not dropdown
+							if (!e.target.closest('.language-button')) {
+								return;
+							}
+							
+							// Prevent multiple events from firing in quick succession
+							if (eventHandled) {
+								e.preventDefault();
+								e.stopPropagation();
+								return;
+							}
+							
+							eventHandled = true;
+							setTimeout(() => { eventHandled = false; }, 500);
+							
+							e.preventDefault();
+							e.stopPropagation();
+							
+							// Close all other dropdowns
+							document.querySelectorAll('.language-dropdown').forEach(d => {
+								if (d !== dropdown) {
+									d.classList.add('hidden');
+								}
+							});
+							
+							// Toggle this dropdown
+							dropdown.classList.toggle('hidden');
+						}
+						
+						// Add listeners only to the button
+						button.addEventListener('pointerdown', toggleDropdown, false);
+						button.addEventListener('touchstart', toggleDropdown, false);
+						button.addEventListener('click', toggleDropdown, false);
+					});
+					
+					// Close dropdown when clicking/touching outside
+					document.addEventListener('pointerdown', function(e) {
+						const isButton = e.target.closest('.language-button');
+						const isDropdown = e.target.closest('.language-dropdown');
+						
+						// Close dropdown if clicking outside (but not on button or dropdown)
+						if (!isButton && !isDropdown) {
+							document.querySelectorAll('.language-dropdown').forEach(dropdown => {
+								dropdown.classList.add('hidden');
+							});
+						}
+					}, false);
+				}
+				
+				// Initialize when DOM is ready with a slight delay to ensure everything is loaded
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', function() {
+						setTimeout(initLanguageSelector, 100);
+					});
+				} else {
+					setTimeout(initLanguageSelector, 100);
+				}
+			})();
 		</script>
 	</body>
 </html>
